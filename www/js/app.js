@@ -5,7 +5,7 @@
 // o segundo parâmetro é uma matriz de 'requires'
 // 'starter.services' é encontrado em services.js
 // 'starter.controllers' é encontrado em controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -39,6 +39,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+  
   .state('tab.fiscalizar-detalhe', {
     url: '/fiscalizar/:publicacaoId',
     views: {

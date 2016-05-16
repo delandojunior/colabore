@@ -1,1 +1,47 @@
 /* Vazio. Adicione seu próprio CSS se a gosto */
+.input-comentario{
+	width: 70%;
+	height: inherit;
+}
+
+.img-detalhe{
+	width: 95%;
+	max-height: 350px;
+    padding-left: inherit;
+}
+
+.icones{
+	padding-right: 5px;
+}
+
+.btn-fiscalizar{
+	padding: 3%;
+}
+.bar.bar-stable{
+	background-color: #FFC107;
+}
+
+.tab-item{
+	background-color: #FFC107;
+} */
+
+#btn-comentar{
+	background-color: #00BCD4;
+}
+
+.tab-item{
+	color: #00BCD4;
+}
+
+#icon-maisComentarios{
+	float: right;
+}
+#descricao{
+	margin: auto;
+}
+.btn-bar{
+	padding: initial;
+    padding-left: 4%;
+
+}
+

@@ -5,24 +5,45 @@
   The Friends service returns an array of friend data
 -->
 <ion-view view-title="{{publicacao.nome}}">
-  <ion-content>
+  <ion-content >
 
     <div class="item item-avatar">
-      <img src="{{publicacao.face}}">
+      <img src="{{publicacao.face}}" alt="foto de {{publicacao.nome}}">
       <h2>{{publicacao.nome}}</h2>
       <p>{{publicacao.data}}</p>
-      <img class="full-image" src="{{publicacao.foto}}">
+       
+
+    </div>
+    <div class="item item-body">
+      <img class="full-image img-detalhe" src="{{publicacao.foto}}" alt="descrição da foto: {{publicacao.descricao}}">
       <p>
         {{publicacao.descricao}}
       </p>
+      <ion-button id="icon-maisComentarios" ng-click="maisComentarios()"> Mais comentários <i class="icones ion-android-arrow-dropdown"></i></ion-button>
     </div>
-    <div class="list">
-      <label class="item item-input">
-        <textarea placeholder="Digite seu comentário"></textarea>
-      </label>
-      <button class="button button-full button-positive">
-        Comentar
-      </button>
+
+
+    <!-- Essas informações eram para estar sendo pegas da tabela usuário. -->
+   
+    <ion-avatar class=" item-left item item-avatar" ng-repeat="coment in tmp">
+    
+      <img class="full-image" src="img/delando.jpg" alt="foto de Cher">
+      <h3>Delando Júnior</h3>
+      <p>{{coment}} </p>
+    </ion-avatar>
+
+    <ion-item class="button-bar">
+      <input class="input-comentario" type="text" placeholder="Digite seu Comentário" ng-model="mensagem" ng-pattern="mensagem" onblur= "this.value=''" ></input>
+      <button id="btn-comentar" class="button button-positive" ng-click="addComentario(mensagem)" > comentar</button>
+    </ion-item>
+
+
+    
+ 
+
+
+   
+
   </ion-content>
-    </div>
+    
 </ion-view>

@@ -1,4 +1,5 @@
-<ion-view view-title="Fiscalizar">
+<ion-view view-title="Fiscalizar" >
+  <link href="css/style.css" rel="stylesheet">
   <ion-content class="padding">
     <div class="list list-inset">
       <label class="item item-input">
@@ -9,21 +10,29 @@
     <div class="list card" ng-repeat="publicacao in publicacoes">
 
       <div class="item item-avatar">
-        <img src="{{publicacao.face}}">
+        <img src="{{publicacao.face}}" alt="foto de {{publicacao.nome}}">
         <h2>{{publicacao.nome}}</h2>
         <p>{{publicacao.data}}</p>
       </div>
       <div class="item item-body">
-        <img class="full-image" src="{{publicacao.foto}}">
-        <p>
+        <img class="full-image" src="{{publicacao.foto}}" alt="{{publicacao.descricao}}">
+        <p id="descricao">
           {{publicacao.descricao}}
         </p>
-        <p>
-          <a href="#/tab/fiscalizar" class="subdued">1 Apoiador</a>
-          <a href="#/tab/fiscalizar/{{publicacao.id}}" class="subdued">5 Comentários</a>
-          <a href="#/tab/fiscalizar" class="subdued">Divulgar</a>
-        </p>
+
       </div>
+      <ion-item item="button-bar"">
+        
+        <ion-button class="btn-fiscalizar subdued dark " ng-click="addApoiador({{publicacao.id}})">
+          <i class="icones ion-android-favorite"></i>{{publicacao.apoiadores}} Apoiar
+        </ion-button>
+
+        <!-- O total de comentarios está pegando o de uma unica publicação e replicando. -->
+        <a href="#/tab/fiscalizar/{{publicacao.id}}" class="btn-fiscalizar subdued dark ">  <i class="icones ion-android-textsms"></i> {{total}} Comentários</a>
+
+        <ion-button class="btn-fiscalizar subdued dark " ng-click=""> <i class="icones ion-speakerphone"></i> Divulgar </ion-button>
+
+      </ion-item>
 
     </div>
   </ion-content>

@@ -12,10 +12,67 @@ angular.module('starter.controllers', [])
   //});
 
   $scope.publicacoes = Publicacoes.all();
+  
+
+  $scope.total = Publicacoes.comentarios(1).length;
+  
+  
+
+
+  $scope.addApoiador = function(publicacaoId){
+    for (var i = 0; i < $scope.publicacoes.length; i++) {
+        if ($scope.publicacoes[i].id === parseInt(publicacaoId)) {
+          $scope.publicacoes[i].apoiadores++;
+
+
+        }
+    }
+  }
 })
 
 .controller('PublicacaoDetailCtrl', function($scope, $stateParams, Publicacoes) {
   $scope.publicacao = Publicacoes.get($stateParams.publicacaoId);
+  $scope.total = Publicacoes.comentarios($stateParams.publicacaoId);
+
+  $scope.ultimocomentario = $scope.total[$scope.total.length - 1];
+
+  //ao substituir o valor dessa cariavel pelo array de comentarios aparecem todos na tela principal.
+  $scope.tmp = [$scope.ultimocomentario];
+  alert($scope.tmp.length);
+
+  //
+ // 
+
+  $scope.addComentario = function(mensagem){
+    alert(mensagem.length);
+    if (parseInt(mensagem.length) === 0 ){
+      
+    }
+
+    Publicacoes.addComentario($stateParams.publicacaoId, mensagem);
+    $scope.tmp = [$scope.total[$scope.total.length - 1]];  
+    //alterar um icone quando ele for clicado.
+     
+
+  };
+
+  $scope.maisComentarios = function(){
+    if($scope.tmp.length === 1 ){
+      $scope.tmp = $scope.total;
+      document.getElementById('icon-maisComentarios').innerHTML = '<i class="ion-android-arrow-dropup">';
+    }
+    else{
+      $scope.tmp = [$scope.ultimocomentario];
+      document.getElementById('icon-maisComentarios').innerHTML = 'Mais comentários <i class="icones ion-android-arrow-dropdown"></i>';
+      
+    }
+   
+
+  }
+
+  
+
+
 })
 
 .controller('AtividadeCtrl', function($scope) {
@@ -23,6 +80,8 @@ angular.module('starter.controllers', [])
   $scope.data = {
     showDelete: false
   };
+
+  
   
   $scope.edit = function(item) {
     alert('Edita Item: ' + item.id);
