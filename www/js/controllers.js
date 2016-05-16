@@ -38,19 +38,20 @@ angular.module('starter.controllers', [])
 
   //ao substituir o valor dessa cariavel pelo array de comentarios aparecem todos na tela principal.
   $scope.tmp = [$scope.ultimocomentario];
-  alert($scope.tmp.length);
+  
 
   //
  // 
 
   $scope.addComentario = function(mensagem){
-    alert(mensagem.length);
+    
     if (parseInt(mensagem.length) === 0 ){
       
     }
 
     Publicacoes.addComentario($stateParams.publicacaoId, mensagem);
-    $scope.tmp = [$scope.total[$scope.total.length - 1]];  
+    $scope.tmp = [$scope.total[$scope.total.length - 1]];
+
     //alterar um icone quando ele for clicado.
      
 
